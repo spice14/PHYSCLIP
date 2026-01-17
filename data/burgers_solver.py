@@ -50,6 +50,15 @@ class BurgersSpectralSolver:
                 f"Time step dt={self.dt} is not small relative to dx={self.dx:.6f}. "
                 "Consider reducing dt or increasing Nx."
             )
+
+        # Diffusive CFL condition for explicit RK4: dt <= dx^2 / (2*nu)
+        if self.nu > 0:
+            dt_diff_limit = (self.dx ** 2) / (2.0 * self.nu)
+            if self.dt > dt_diff_limit:
+                raise ValueError(
+                    f"Time step dt={self.dt} exceeds diffusion stability limit {dt_diff_limit:.6f} "
+                    f"for nu={self.nu}. Reduce dt or use implicit treatment of viscosity."
+                )
         
     def _spatial_derivatives(self, u_hat):
         """

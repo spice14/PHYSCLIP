@@ -24,7 +24,7 @@ def generate_dataset(
     n_modes_list=None,
     t_final=1.0,
     nx=256,
-    dt=0.01,
+    dt=0.0005,
     n_snapshots=11,
     seed=42
 ):
@@ -66,6 +66,17 @@ def generate_dataset(
         nu_values = [0.01, 0.05, 0.1, 0.2]
     if n_modes_list is None:
         n_modes_list = [1, 2, 3, 4]
+
+    # Diffusive stability guard: dt must satisfy dt <= dx^2 / (2*max_nu)
+    max_nu = max(nu_values) if len(nu_values) > 0 else 0.0
+    dx = 2 * np.pi / nx
+    if max_nu > 0:
+        dt_limit = (dx ** 2) / (2.0 * max_nu)
+        if dt >= dt_limit:
+            raise ValueError(
+                f"Time step dt={dt} is too large for diffusion stability (limit {dt_limit:.6f} for nu={max_nu}). "
+                "Reduce dt or increase nx."
+            )
     
     # Numerical safety check
     dx = 2 * np.pi / nx
@@ -139,7 +150,7 @@ if __name__ == "__main__":
         n_modes_list=[1, 2, 3, 4],
         t_final=1.0,
         nx=256,
-        dt=0.01,
+        dt=0.0005,
         n_snapshots=11,
         seed=42
     )
