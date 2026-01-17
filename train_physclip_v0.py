@@ -44,8 +44,8 @@ NORMALIZE_OUTPUT = True
 
 # Training hyperparameters
 NUM_EPOCHS = 100  # Longer training to reach convergence
-BATCH_SIZE = 16  # Smaller batch for better positive:negative ratio
-LEARNING_RATE = 1e-3  # Higher learning rate for faster convergence
+BATCH_SIZE = 8  # Smaller batch for better positive:negative ratio
+LEARNING_RATE = 2.5e-3  # Higher learning rate for faster convergence
 TEMPERATURE = 0.07  # Temperature for contrastive loss
 
 # Device
