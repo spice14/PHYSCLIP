@@ -1,0 +1,30 @@
+# PHYSCLIP v0 Requirements
+# Physics-informed contrastive learning for regime identification
+
+# Core numerical computing
+numpy>=1.24.0
+
+# Plotting and visualization
+matplotlib>=3.7.0
+
+# Deep learning framework (GPU-optimized)
+# Install PyTorch with CUDA support
+# For CUDA 11.8 (adjust based on your system):
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Alternative: CPU-only PyTorch (uncomment if no GPU available)
+# torch>=2.0.0
+# torchvision>=0.15.0
+# torchaudio>=2.0.0
+
+# Text embeddings
+sentence-transformers>=2.2.0
+
+# Additional dependencies pulled by sentence-transformers
+transformers>=4.30.0
+tokenizers>=0.13.0
+
+# Utilities
+tqdm>=4.65.0

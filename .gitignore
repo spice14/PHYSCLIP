@@ -215,3 +215,31 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ========== PHYSCLIP PROJECT-SPECIFIC ==========
+# Data and results directories (large binary files)
+physclip/data/burgers_data/
+physclip/data/burgers_data/**/*.npy
+physclip/results/
+physclip/results/**/*.pt
+physclip/results/**/*.pkl
+
+# Model checkpoints
+**/checkpoints/
+**/*.pt
+**/*.pth
+**/*.pkl
+
+# Visualization outputs (examples ok, generated ones not)
+**/embeddings_*.png
+**/losses_*.png
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE backups
+*.swp
+*.swo
+*~
